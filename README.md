@@ -1,4 +1,4 @@
-# Project 0 for CS50W course
+# Project 0: Search
 
 ## Video demonstration
 https://www.youtube.com/watch?v=G7krIOm8_bA
@@ -20,4 +20,9 @@ Website with 3 pages, one for Google Search, one for Image Search and one for Ad
 - imageSearch.html
 - advancedSearch.html
 - styles.css
+
+# Project 1: Wiki
+
+V1: 2022-April-06
+Web app already working correctly, but I've not used redirections at the end of functions like random_page, new_page, edit_page... Instead they just render the page and the content at the end of the functions, but the URL is incorrect in the bar.
 
