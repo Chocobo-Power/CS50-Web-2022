@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Advanced Search</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+
+    <body class="advanced-super-container">
+
+        <section class="links-section">
+            <div class="small-logo-container">
+                <!-- <img src="googlelogo_color_272x92dp.png" alt="Google Logo" id="small-logo"> -->
+                <img src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png" alt="Google Logo" id="small-logo">
+            </div>
+
+
+            <div class="group-link-container">
+                <div class="individual-link-container">
+                    <a href="index.html" class="nav-link">Google Search</a>
+                </div>
+            </div>
+        </section>
+        
+        <section class="title-section">
+            Búsqueda Avanzada
+        </section>
+
+        <section class="adv-srch-form-section">
+            
+            <form action="https://google.com/search">
+                
+                <div class="adv-srch-form-inner-box">
+                    
+                    <div class="adv-srch-form-row-container" id="header-row">
+                        <div class="adv-srch-form-label-container">
+                            <span id="first-column-header">Mostrar páginas que contengan</span>
+                        </div>
+                        <div class="adv-srch-form-input-container">
+
+                        </div>
+                        <div class="adv-srch-form-row-details" id="last-column-header">
+                            Para hacer esto en el cuadro de búsqueda
+                        </div>
+                    </div>
+                    
+                    <!-- All THESE WORDS -->
+                    <div class="adv-srch-form-row-container">
+                        <div class="adv-srch-form-label-container">
+                            <label for="as_q" class="adv-srch-form-label">todas estas palabras:</label>
+                        </div>
+                        <div class="adv-srch-form-input-container">
+                            <input type="text" name="as_q" id="as_q" class="adv-srch-form-input" autofocus>
+                        </div>
+                        <div class="adv-srch-form-row-details">
+                            Ingresa las palabras importantes: <span class="example-words">Terrier ratonero tricolor</span>.
+                        </div>
+                    </div>
+                    
+                    <!-- THIS EXACT WORD OR PHRASE -->
+                    <div class="adv-srch-form-row-container">
+                        <div class="adv-srch-form-label-container">
+                            <label for="as_epq" class="adv-srch-form-label">esta palabra o frase exactas:</label>
+                        </div>
+                        <div class="adv-srch-form-input-container">
+                            <input type="text" name="as_epq" id="as_epq" class="adv-srch-form-input">
+                        </div>
+                        <div class="adv-srch-form-row-details">
+                            Ingresa las palabras exactas entre comillas: <span class="example-words">"Terrier ratonero"</span>.
+                        </div>
+                    </div>
+                    
+                    <!-- ANY OF THESE WORDS -->
+                    <div class="adv-srch-form-row-container">
+                        <div class="adv-srch-form-label-container">
+                            <label for="as_oq" class="adv-srch-form-label">cualquiera de estas palabras:</label>
+                        </div>
+                        <div class="adv-srch-form-input-container">
+                            <input type="text" name="as_oq" id="as_oq" class="adv-srch-form-input">
+                        </div>
+                        <div class="adv-srch-form-row-details">
+                            Ingresa OR entre las palabras que desees: <span class="example-words">En minuatura OR estándar</span>.
+                        </div>
+                    </div>
+                    
+                    <!-- NONE OF THESE WORDS -->
+                    <div class="adv-srch-form-row-container">
+                        <div class="adv-srch-form-label-container">
+                            <label for="as_eq" class="adv-srch-form-label">ninguna de estas palabras:</label>
+                        </div>
+                        <div class="adv-srch-form-input-container">
+                            <input type="text" name="as_eq" id="as_eq" class="adv-srch-form-input">
+                        </div>
+                        <div class="adv-srch-form-row-details">
+                            Ingresa un signo menos justo delante de las palabras que no deseas que aparezcan: <span class="example-words">-Roedor, -"Jack Russell"</span>.
+                        </div>
+                    </div>
+                    
+                    <!-- SUBMIT BUTTON -->
+                    <div class="adv-srch-form-row-container" id="bottom-row">
+                        <div class="adv-srch-form-button-container">
+                            <input type="submit" value="Advanced Search" class="adv-srch-form-button">
+                        </div>
+                    </div>
+                </div>
+                
+            </form>
+        </section>
+        
+        
+        <section class="bottom-section"></section>
+        
+    </body>
+</html>

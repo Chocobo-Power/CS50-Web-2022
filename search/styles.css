@@ -1,0 +1,259 @@
+html, body { 
+    height:100%;
+    margin:0;
+    padding:0; 
+}
+
+.super-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.links-section {
+    display: flex;
+    justify-content: space-between;
+    height: 48px;
+    padding: 0 5px 0 5px;
+    background-color: #f6f8fa;
+    margin-bottom: 20px;
+}
+
+.group-link-container {
+    display: flex;
+    height: 48px;
+    padding: 0 15px 0 0;
+    margin-right: 20px;
+}
+
+.individual-link-container {
+    display: flex;
+    align-items: center;
+    padding: 0 5px 0 15px;
+    font-size: 12px;
+}
+
+.nav-link {
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    /* color: blue; */
+}
+
+.nav-link:hover {
+    text-decoration: underline;
+}
+
+.search-form-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+    /* height: 80%; */
+    align-items: center;
+}
+
+.logo-container {
+    margin: 25px 50px;
+}
+
+.search-bar {
+    width: 584px;
+    /* min-width: 358px; */
+    /* max-width: 584px; */
+    height: 46px;
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    border-radius: 23px;
+    border: solid 1px rgb(213, 213, 213);
+    outline: solid 1px rgb(213, 213, 213);
+    padding-left: 33px;
+    transition: 100ms;
+    box-sizing: border-box;
+}
+
+.search-bar:focus {
+    box-shadow: 0 0 2pt 1pt rgb(213, 213, 213);
+}
+
+.search-bar:hover {
+    box-shadow: 0 0 2pt 2pt rgb(213, 213, 213); 
+}
+
+.group-buttons-container {
+    display: flex;
+    justify-content: center;
+    padding-top: 18px;
+    height: 150px;
+}
+
+.search-button {
+    width: 180px;
+    height: 36px;
+    margin: 11px 6px;
+    border-width: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+    transition: 200ms;
+    border-radius: 5px;
+}
+
+.search-button:hover {
+    cursor: pointer;
+}
+
+.search-button:hover {
+    box-shadow: 0 0 1px 1px rgb(213, 213, 213); 
+}
+
+.bottom-section {
+    height: 100px;
+    padding: 0 5px 0 5px;
+    background-color: #f6f8fa;
+    margin-top: 40px;
+}
+
+/*  ###########################################  */
+/*  ###########  ADVANCED SEARCH ##############  */
+/*  ###########################################  */
+
+.advanced-super-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.small-logo-container {
+    height: 48px;
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+}
+
+#small-logo {
+    height: 25px;
+}
+
+.title-section {
+    /* margin-left: 40px; */
+    margin-top: 35px;
+    margin-bottom: 30px;
+    margin-left: 50px;
+    width: 1140px;
+    /* height: ; */
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    color: rgb(228, 0, 0);
+
+    /* justify-self: flex-start; */
+}
+
+
+.adv-srch-form-section {
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 30px;
+    margin-left: 50px;
+
+    flex-grow: 1;
+}
+
+.adv-srch-form-inner-box {
+    width: 1140px;
+    /* border: solid 1px pink; */
+}
+
+.adv-srch-form-row-container {
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+}
+
+#header-row {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#first-column-header {
+    padding-top: 5px;
+    font-size: 16px;
+}
+
+#last-column-header {
+    font-size: 13px;
+    padding-top: 5px;
+}
+
+#bottom-row {
+    margin-top: 5px;
+}
+
+.adv-srch-form-label-container {
+    width: 183px;
+    height: 42px;
+    font-size: 13px;
+    box-sizing: border-box;
+    padding-top: 5px;
+}
+
+.adv-srch-form-input-container {
+    width: 572px;
+    height: 42px;
+}
+
+/* NO TENGO IDEA POR QUE ESTOS ELEMENTOS EN LA PAGINA TIENEN UN TAMAÑO MAYOR!!! */
+/* width: 572; height: 29; */
+/* YA SE POR QUE ERAAAAA, SE SOLUCIONO CON BORDER-BOX */
+.adv-srch-form-input {
+    width: 572px;
+    height: 29px;
+    box-sizing: border-box;
+    padding-left: 10px;
+
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(135, 135, 135);
+    outline-color: rgb(135, 135, 135);
+    outline-width: 1px;
+}
+
+.adv-srch-form-input:focus {
+    border-color: #2d8fff;
+    outline-color: #2d8fff;
+    outline-width: 1px;
+}
+
+.adv-srch-form-button-container {
+    width: 755px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.adv-srch-form-row-details {
+    width: 370px;
+    height: 30px;
+    font-size: 11px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #555555;
+    padding: 2px 0 0 5px;
+    margin: 0 0 8px 11px;
+    box-sizing: border-box;
+    /* background-color: aqua; */
+
+}
+
+.example-words {
+    font-family: monospace;
+}
+
+.adv-srch-form-button {
+    background-color: #0075ff;
+    color: white;
+    width: 132px;
+    height: 30px;
+    border-width: 0;
+    border-radius: 5px;
+    transition: 100ms;
+}
+
+.adv-srch-form-button:hover {
+    cursor: pointer;
+    background-color: #2589fc;
+}
