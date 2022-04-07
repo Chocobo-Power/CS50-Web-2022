@@ -57,6 +57,14 @@ def search(request):
     # If entry exists, render it's page
     if found:
         html_content = markdown2.markdown(found)
+        # return HttpResponseRedirect(reverse("entry"), {
+        #     "title": search,
+        #     "content": html_content
+        # }) # <-- NO FUNCIONAAAAAA !!
+        # return HttpResponseRedirect("/wiki/entry.html", {
+        #     "title": search,
+        #     "content": html_content
+        # })
         return render(request, "wiki/entry.html", {
             "title": search,
             "content": html_content
