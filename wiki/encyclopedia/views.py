@@ -1,15 +1,12 @@
 import markdown2
-from django.http import HttpResponse
+# from django.http import HttpResponse
 from django.shortcuts import render
 from . import util
-from django import forms
+# from django import forms
 from django.http import HttpResponseRedirect
-from django.urls import reverse
+# from django.urls import reverse
 import random
 import math
-
-# class NewSearchForm(forms.Form):
-    # search = forms.CharField(label="New Search")
 
 
 def index(request):
@@ -22,10 +19,6 @@ def index(request):
 # ########## RUTA PARA ENTRIES ###########
 # ########################################
 
-"""
-1) QUIERO QUE EL RESULTADO DIRECTO DE SEARCH (MATCH EXACTO)
-VENGA DE FRENTE POR ESTA RUTA
-"""
 
 def entry(request, title):
     # Obtener contenido en formato Markdown de carpeta entries/
@@ -43,7 +36,6 @@ def entry(request, title):
     # Llamar template entry.html, pasar title y content
     return render(request, "wiki/entry.html", {
         "title": title,
-        # "content": markdown2.markdown(util.get_entry(title))
         "content": html_content
     })
 
@@ -60,21 +52,10 @@ def search(request):
     # Try to find the entry
     found = util.get_entry(search)
 
-    # If entry exists, render it's page
+    # If entry exists, redirect to entry's page
     if found:
-        html_content = markdown2.markdown(found)
-        # return HttpResponseRedirect(reverse("entry"), {
-        #     "title": search,
-        #     "content": html_content
-        # }) # <-- NO FUNCIONAAAAAA !!
-        # return HttpResponseRedirect("/wiki/entry.html", {
-        #     "title": search,
-        #     "content": html_content
-        # })
-        return render(request, "wiki/entry.html", {
-            "title": search,
-            "content": html_content
-        })
+        to_redirect = '/wiki/' + search # <-- SE SUPONE QUE DEBO USAR REVERSE, PERO NO ME LIGA
+        return HttpResponseRedirect(to_redirect)
 
     # IF ENTRY DOES NOT EXIST, TRY TO SEARCH SUBSTRINGS !!!
 
@@ -87,19 +68,34 @@ def search(request):
         if search.upper() in entries[i].upper():
             found.append(entries[i])
 
-    # If we find entries, render a "Search Results" Page
+    # If we find entries, redirect to results Page
     if found:
-        return render(request, "encyclopedia/search.html", {
-            "entries": found
-        })
+        to_redirect = '/results/' + search.lower()
+        return HttpResponseRedirect(to_redirect)
 
-    # If nothing found at all, return "Not Found" Page
-    return render(request, "encyclopedia/notfound.html", {
-        "title": search
+    # If nothing found at all, redirecto to not_found Page
+    to_redirect = '/not_found/' + search.lower()
+    return HttpResponseRedirect(to_redirect)
+
+
+def results(request, title):
+    entries = util.list_entries()
+
+    # List of found entries that contain the substring "search"
+    found = []
+    for i in range(len(entries)):
+        if title in entries[i].lower():
+            found.append(entries[i])
+
+    return render(request, "encyclopedia/results.html", {
+        "entries": found
     })
 
-    # Just in case....
-    return HttpResponse("SEARCH FAILED")
+
+def not_found(request, title):
+    return render(request, "encyclopedia/notfound.html", {
+            "title": title
+        })
 
 
 # Función que simplemente pone en CAPS strings "html" y "css"
@@ -115,24 +111,12 @@ def nicely(title):
 
 def random_page(request):
 
-    # Obtener lista de todos los entries
+    # Obtener random entry de la lista de entries
     entries = util.list_entries()
-
-    # Obtener random entry de la lista
     entry = random_pick(entries)
-
-    # Get the content from /entries
-    md_content = util.get_entry(entry)
-    html_content = markdown2.markdown(md_content)
-
-    # Render Page!
-    return render(request, "wiki/entry.html ", {
-        "title": entry,
-        "content": html_content
-    })
-
-    # Just in case....
-    return HttpResponse("RANDOM PAGE FAILED")
+    # Redirect to entry's Page
+    to_redirect = '/wiki/' + entry
+    return HttpResponseRedirect(to_redirect)
 
 
 # Función que retorna un elemento random de una lista
@@ -146,39 +130,33 @@ def random_pick(entries):
 # ##################################################
 
 def new_page(request):
-
     # Si request es POST, intentar crear el nuevo entry
     if request.method == "POST":
-
         # Obtener title y content de formulario
         new_title = request.POST.get('new_title')
         new_content = request.POST.get('new_content')
-
         # Capitalize the first letter (without changing the rest), also strip() just in case
         new_title = my_upper(new_title.strip())
-
-        # Check if entry's title aready exists
+        # If title already exists, redirect to Error Page
         if util.get_entry(new_title):
-            return render(request, "encyclopedia/already_exists.html", {
-                "title": new_title
-            })
-        # If title is new, create new entry and render it's page
+            to_redirect = "/already_exists/" + new_title.lower()
+            return HttpResponseRedirect(to_redirect)
+        # If title is new, create new entry and redirect to it's Page
         else:
             util.save_entry(new_title, new_content)
-            md_content = util.get_entry(new_title)
-            html_content = markdown2.markdown(md_content)
-            
-            return render(request, "wiki/entry.html", {
-                "title": new_title,
-                "content": html_content
-            })
-
+            to_redirect = '/wiki/' + new_title
+            return HttpResponseRedirect(to_redirect)
     # Si request no es POST, render new_page Page
     else:
         return render(request, "encyclopedia/new_page.html")
 
-    # Just in case...
-    return HttpResponse("NEW PAGE FAILED")
+
+def already_exists(request, title):
+    # return HttpResponse("PAGE ALREADY EXISTS")
+    title = my_upper(nicely(title))
+    return render(request, "encyclopedia/already_exists.html", {
+        "title": title
+    })
 
 
 # Capitalize the first letter of every word in a string, don't change anything else

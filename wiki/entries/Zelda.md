@@ -1,3 +1,4 @@
 # Zelda
 
-Hyrule warriors, attack!
+
+It's very dangerous outside!
