@@ -21,6 +21,12 @@ def index(request):
 # ########################################
 # ########## RUTA PARA ENTRIES ###########
 # ########################################
+
+"""
+1) QUIERO QUE EL RESULTADO DIRECTO DE SEARCH (MATCH EXACTO)
+VENGA DE FRENTE POR ESTA RUTA
+"""
+
 def entry(request, title):
     # Obtener contenido en formato Markdown de carpeta entries/
     md_content = util.get_entry(title)
